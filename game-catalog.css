@@ -115,20 +115,6 @@
   background: #a899ff;
 }
 
-.game-category .game-list li.game-series {
-  display: grid;
-  gap: 2px;
-}
-
-.game-category .game-list li.game-series::before {
-  grid-row: 1 / span 10;
-  margin-top: 4px;
-}
-
-.game-category .game-list li.game-series span {
-  display: block;
-}
-
 .game-category.top {
   border-color: rgba(255, 215, 139, 0.25);
   background: linear-gradient(135deg, rgba(255, 194, 111, 0.13), rgba(34, 15, 82, 0.14));

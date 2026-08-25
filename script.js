@@ -85,12 +85,7 @@ gameCategoriesElement.innerHTML = gameCategories
           <span>${gamesInCategory(category)}</span>
         </div>
         <ul class="game-list">
-          ${category.games
-            .map((game) => {
-              const series = Array.isArray(game) ? game : [game];
-              return `<li class="${series.length > 1 ? 'game-series' : ''}">${series.map((title) => `<span>${title}</span>`).join('')}</li>`;
-            })
-            .join('')}
+          ${category.games.flat().map((game) => `<li>${game}</li>`).join('')}
         </ul>
       </section>`,
   )
