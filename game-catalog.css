@@ -115,6 +115,26 @@
   background: #a899ff;
 }
 
+.game-category .game-list li.game-series {
+  position: relative;
+  display: grid;
+  gap: 3px;
+  padding: 7px 8px 7px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.game-category .game-list li.game-series::before {
+  position: absolute;
+  top: 11px;
+  left: 6px;
+}
+
+.game-category .game-list li.game-series span {
+  display: block;
+}
+
 .game-category.top {
   border-color: rgba(255, 215, 139, 0.25);
   background: linear-gradient(135deg, rgba(255, 194, 111, 0.13), rgba(34, 15, 82, 0.14));

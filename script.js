@@ -16,39 +16,23 @@ const gameCategories = [
       'Ведьмак 3: Дикая Охота',
       'God of War',
       "Ghost of Tsushima: Director's Cut",
-      'Resident Evil 2',
-      'Resident Evil 3',
-      'Resident Evil 4',
-      'Resident Evil Village: Gold Edition',
-      'Uncharted 4: Путь вора',
-      'Uncharted: The Lost Legacy',
+      ['Resident Evil 2', 'Resident Evil 3', 'Resident Evil 4', 'Resident Evil Village: Gold Edition'],
+      ['Uncharted 4: Путь вора', 'Uncharted: The Lost Legacy'],
       'Batman: Рыцарь Аркхэма',
-      'Battlefield V',
-      'Battlefield 1',
-      'Battlefield 4',
-      'Battlefield Hardline',
-      'Need for Speed',
-      'Need for Speed Payback',
-      'Need for Speed Rivals',
+      ['Battlefield V', 'Battlefield 1', 'Battlefield 4', 'Battlefield Hardline'],
+      ['Need for Speed', 'Need for Speed Payback', 'Need for Speed Rivals'],
       'Mafia III: Definitive Edition',
       'Persona 5 Royal',
       'Metro Exodus',
       'Ratchet & Clank',
-      "Assassin's Creed Unity",
-      "Assassin's Creed Mirage",
-      'Far Cry 5',
-      'Far Cry 6',
-      'Life is Strange',
-      'Life is Strange: Before the Storm',
-      'Life is Strange 2',
-      'Little Nightmares',
-      'Little Nightmares II',
-      'Little Nightmares III',
+      ["Assassin's Creed Unity", "Assassin's Creed Mirage"],
+      ['Far Cry 5', 'Far Cry 6'],
+      ['Life is Strange', 'Life is Strange: Before the Storm', 'Life is Strange 2'],
+      ['Little Nightmares', 'Little Nightmares II', 'Little Nightmares III'],
       'Unravel',
       'Subnautica',
       'Kingdom Come: Deliverance Royal Edition',
-      'Final Fantasy XV',
-      "A King's Tale: Final Fantasy XV",
+      ['Final Fantasy XV', "A King's Tale: Final Fantasy XV"],
       'Yakuza 6: Song of Life',
       'Hitman',
       'Riders Republic',
@@ -72,8 +56,7 @@ const gameCategories = [
     title: 'Другие игры',
     games: [
       'A Plague Tale: Innocence',
-      'SnowRunner',
-      'MudRunner',
+      ['SnowRunner', 'MudRunner'],
       'The Dark Pictures Anthology',
       'Project CARS',
       'The Council',
@@ -90,7 +73,8 @@ const gameCategories = [
 
 const gameCategoriesElement = document.querySelector('#game-categories');
 const gamesCount = document.querySelector('#games-count');
-const totalGames = gameCategories.reduce((total, category) => total + category.games.length, 0);
+const gamesInCategory = (category) => category.games.reduce((total, game) => total + (Array.isArray(game) ? game.length : 1), 0);
+const totalGames = gameCategories.reduce((total, category) => total + gamesInCategory(category), 0);
 
 gameCategoriesElement.innerHTML = gameCategories
   .map(
@@ -98,10 +82,15 @@ gameCategoriesElement.innerHTML = gameCategories
       <section class="game-category ${category.id}">
         <div class="game-category-heading">
           <h4>${category.title}</h4>
-          <span>${category.games.length}</span>
+          <span>${gamesInCategory(category)}</span>
         </div>
         <ul class="game-list">
-          ${category.games.map((game) => `<li>${game}</li>`).join('')}
+          ${category.games
+            .map((game) => {
+              const series = Array.isArray(game) ? game : [game];
+              return `<li class="${series.length > 1 ? 'game-series' : ''}">${series.map((title) => `<span>${title}</span>`).join('')}</li>`;
+            })
+            .join('')}
         </ul>
       </section>`,
   )
