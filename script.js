@@ -45,7 +45,6 @@ const gameCategories = [
       'Little Nightmares II',
       'Little Nightmares III',
       'Unravel',
-      'Unravel Two',
       'Subnautica',
       'Kingdom Come: Deliverance Royal Edition',
       'Final Fantasy XV',
@@ -62,6 +61,7 @@ const gameCategories = [
     id: 'party',
     title: 'Игры в паре или на компанию',
     games: [
+      'Unravel Two',
       'F1 23',
       'Enter the Gungeon',
       'Dead or Alive 5 Last Round',
