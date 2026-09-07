@@ -8,8 +8,41 @@ const socialLinks = {
 // в нужной категории ниже. Счётчик в шапке каталога пересчитается сам.
 const gameCategories = [
   {
-    id: 'top',
-    title: 'Самые топовые игры',
+    id: 'deluxe',
+    title: 'PS Plus Deluxe',
+    note: 'Главные хиты каталога — и ещё 600+ игр.',
+    games: [
+      "Ghost of Tsushima: Director's Cut",
+      'God of War',
+      'Horizon Zero Dawn: Complete Edition',
+      'Days Gone',
+      'Cyberpunk 2077',
+      'Kingdom Come: Deliverance',
+      'Sackboy: A Big Adventure',
+      'Overcooked! All You Can Eat',
+    ],
+  },
+  {
+    id: 'ea',
+    title: 'EA Play',
+    note: 'Хиты из The Play List и ещё десятки игр EA.',
+    games: [
+      'EA Sports FC 25',
+      'F1 24',
+      'Battlefield 2042',
+      'Battlefield V',
+      'Need for Speed Heat',
+      'Star Wars Jedi: Fallen Order',
+      'Star Wars: Squadrons',
+      'Mass Effect Legendary Edition',
+      'Titanfall 2',
+      'A Way Out',
+      'Unravel Two',
+    ],
+  },
+  {
+    id: 'owned',
+    title: 'Купленные игры',
     games: [
       'Red Dead Redemption 2: Ultimate Edition',
       'Grand Theft Auto V',
@@ -17,7 +50,7 @@ const gameCategories = [
       'God of War',
       "Ghost of Tsushima: Director's Cut",
       ['Resident Evil 2', 'Resident Evil 3', 'Resident Evil 4', 'Resident Evil Village: Gold Edition'],
-      ['Uncharted 4: Путь вора', 'Uncharted: The Lost Legacy'],
+      ['Uncharted 4: Путь вора', 'Uncharted: Потерянное наследие'],
       'Batman: Рыцарь Аркхэма',
       ['Battlefield V', 'Battlefield 1', 'Battlefield 4', 'Battlefield Hardline'],
       ['Need for Speed', 'Need for Speed Payback', 'Need for Speed Rivals'],
@@ -32,7 +65,7 @@ const gameCategories = [
       'Unravel',
       'Subnautica',
       'Kingdom Come: Deliverance Royal Edition',
-      ['Final Fantasy XV', "A King's Tale: Final Fantasy XV"],
+      'Final Fantasy XV',
       'Yakuza 6: Song of Life',
       'Hitman',
       'Riders Republic',
@@ -44,29 +77,14 @@ const gameCategories = [
   {
     id: 'party',
     title: 'Игры в паре или на компанию',
+    note: 'Лучшее из PS Plus Deluxe и EA Play для вечера на одной консоли.',
     games: [
+      'Sackboy: A Big Adventure',
+      'Overcooked! All You Can Eat',
+      'EA Sports FC 25',
+      'F1 24',
+      'A Way Out',
       'Unravel Two',
-      'F1 23',
-      'Enter the Gungeon',
-      'Dead or Alive 5 Last Round',
-    ],
-  },
-  {
-    id: 'other',
-    title: 'Другие игры',
-    games: [
-      'A Plague Tale: Innocence',
-      ['SnowRunner', 'MudRunner'],
-      'The Dark Pictures Anthology',
-      'Project CARS',
-      'The Council',
-      "King's Quest",
-      'Commandos 3',
-      'Hatsune Miku: Project DIVA Future Tone',
-      'Journey',
-      'ABZÛ',
-      'Island Saver',
-      'Syberia: The World Before',
     ],
   },
 ];
@@ -84,6 +102,7 @@ gameCategoriesElement.innerHTML = gameCategories
           <h4>${category.title}</h4>
           <span>${gamesInCategory(category)}</span>
         </div>
+        ${category.note ? `<p class="game-category-note">${category.note}</p>` : ''}
         <ul class="game-list">
           ${category.games.flat().map((game) => `<li>${game}</li>`).join('')}
         </ul>
