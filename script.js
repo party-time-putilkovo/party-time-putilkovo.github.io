@@ -137,6 +137,18 @@ gameCategoriesElement.innerHTML = gameCategories
 
 gamesCount.textContent = `${totalGames} игр`;
 
+// Каталог теперь заметно длиннее первого варианта лендинга. Фоновый слой
+// подстраивается под фактическую высоту страницы, чтобы паттерны не обрывались.
+const patternLayer = document.querySelector('.pattern-layer');
+const updatePatternLayerHeight = () => {
+  if (!patternLayer) return;
+  patternLayer.style.height = `${Math.max(2300, document.documentElement.scrollHeight)}px`;
+};
+
+updatePatternLayerHeight();
+window.addEventListener('load', updatePatternLayerHeight);
+window.addEventListener('resize', updatePatternLayerHeight);
+
 const taglines = [
   'Пройди уже наконец эту игру',
   'Погоняй с друзьями в FIFA',
