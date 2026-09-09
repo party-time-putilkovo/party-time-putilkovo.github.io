@@ -125,7 +125,6 @@ gameCategoriesElement.innerHTML = gameCategories
       <section class="game-category ${category.id}">
         <div class="game-category-heading">
           <h4>${category.title}</h4>
-          <span>${gamesInCategory(category)}</span>
         </div>
         ${category.note ? `<p class="game-category-note">${category.note}</p>` : ''}
         <ul class="game-list">
